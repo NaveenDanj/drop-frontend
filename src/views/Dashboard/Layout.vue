@@ -40,7 +40,7 @@
 
             <v-list-item dark link>
                 <v-list-item-icon >
-                    <v-icon >mdi-home</v-icon>
+                    <v-icon >mdi-star-box-multiple </v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>Favourite</v-list-item-title>
             </v-list-item>
@@ -56,6 +56,7 @@
             <v-btn icon dark @click="() => drawer = !drawer">
                 <v-icon>mdi-menu</v-icon>
             </v-btn>
+            <label class="white--text">CloudBOX</label>
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -74,7 +75,8 @@
     <v-main class="pa-2" style="background-color:#1D1D1F;color:white;">
         
         <Files v-if="false" />
-        <Favourite />
+        <Favourite v-if="false" />
+        <Main v-if="true" />
 
     </v-main>
 
@@ -86,13 +88,14 @@
 
 import Files from './Files.vue';
 import Favourite from './Favourite.vue'
-
+import Main from './Main.vue'
 
 export default {
     
     components: {
         Files,
-        Favourite
+        Favourite,
+        Main
     },
 
     data(){
