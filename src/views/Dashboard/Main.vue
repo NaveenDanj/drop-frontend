@@ -55,7 +55,9 @@
 
     <div style="background-color : #121212;" class="pa-5">
 
-      <h2>Files</h2>
+        <div class="d-flex justify-space-between" >
+            <h2>Files</h2>
+        </div>
 
       <v-data-table
         style="background-color: #121212"

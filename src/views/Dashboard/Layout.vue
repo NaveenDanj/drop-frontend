@@ -72,13 +72,18 @@
 
     </v-app-bar>
 
-    <v-main class="pa-2" style="background-color:#1D1D1F;color:white;">
+    <v-main class="pa-2" style="background-color:#1D1D1F;color:white;" >
         
         <Files v-if="false" />
         <Favourite v-if="false" />
         <Main v-if="true" />
 
     </v-main>
+
+    <v-footer style="background-color : #121212;" class="pa-2 d-flex justify-space-between">
+        <label style="color : #929292">Privacy Policy Terms of Use</label>
+        <label style="color : #929292">Copyright 2022 CloudBOX All Rights Reserved.</label>
+    </v-footer>
 
   </v-app>
 
