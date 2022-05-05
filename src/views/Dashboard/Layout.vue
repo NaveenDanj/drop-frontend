@@ -73,7 +73,8 @@
 
     <v-main class="pa-2" style="background-color:#1D1D1F;color:white;">
         
-        <Files />
+        <Files v-if="false" />
+        <Favourite />
 
     </v-main>
 
@@ -84,12 +85,14 @@
 <script>
 
 import Files from './Files.vue';
+import Favourite from './Favourite.vue'
 
 
 export default {
     
     components: {
-        Files
+        Files,
+        Favourite
     },
 
     data(){
