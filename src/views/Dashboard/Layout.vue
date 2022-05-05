@@ -10,9 +10,7 @@
         <v-divider></v-divider>
 
         <div class="d-flex justify-center mt-5">
-            <v-btn outlined dark>
-                <v-icon left>mdi-plus</v-icon>Create New
-            </v-btn>
+            <UploadFile />
         </div>
 
         <!-- navigation list -->
@@ -94,13 +92,15 @@
 import Files from './Files.vue';
 import Favourite from './Favourite.vue'
 import Main from './Main.vue'
+import UploadFile from '../../components/Dialog/UploadFile.vue'
 
 export default {
     
     components: {
         Files,
         Favourite,
-        Main
+        Main,
+        UploadFile
     },
 
     data(){
