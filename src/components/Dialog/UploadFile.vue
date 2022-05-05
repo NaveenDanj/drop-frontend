@@ -14,7 +14,7 @@
       </template>
 
       <SelectFile v-if="!file" @fileSelected="handleFileSelected" />
-      <SetParameters v-if="file" />
+      <SetParameters v-if="file" :file="file" />
 
     </v-dialog>
 

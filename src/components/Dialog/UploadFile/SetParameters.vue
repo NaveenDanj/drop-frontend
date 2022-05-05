@@ -1,7 +1,10 @@
 <template>
 
   <v-card>
-    <v-card-title class="text-h5 #1D1D1F"> Set Parameters </v-card-title>
+    <v-card-title class="text-h6 #1D1D1F">
+      <v-icon left>mdi-file</v-icon>
+      {{ this.file.name + " " }} {{  (this.file.size / 1000000).toFixed(3) }} MB
+    </v-card-title>
 
     <v-divider></v-divider>
 
@@ -59,19 +62,16 @@
             v-model="downloads"
             :items="[1 , 5 , 10]"
             prepend-icon="mdi-download"
-            :disabled="!allowDownloads"
+            :disabled="!allowDownload"
           />
 
           <v-checkbox
-            v-model="allowDownloads"
+            v-model="allowDownload"
             class="my-auto ml-2"
           />
 
         </div>
 
-
-
-        
       </v-form>
     
     </v-card-text>
