@@ -14,7 +14,8 @@
       </template>
 
       <SelectFile v-if="!file" @fileSelected="handleFileSelected" />
-      <SetParameters v-if="file" :file="file" />
+      <SetParameters v-if="showSetParameters" :file="file" @doUpload="handleDoUpload" />
+      <UploadProgress  v-if="uploadProgressShow" />
 
     </v-dialog>
 
@@ -26,19 +27,22 @@
 
   import SetParameters from './UploadFile/SetParameters.vue';
   import SelectFile from './UploadFile/SelectFile.vue'
-
+  import UploadProgress from './UploadFile/UploadProgress.vue';
 
   export default {
 
     components : {
       SetParameters,
-      SelectFile
+      SelectFile,
+      UploadProgress
     },
 
     data () {
       return {
         dialog: false,
-        file : null
+        file : null,
+        uploadProgressShow : false,
+        showSetParameters : false,
       }
     },
 
@@ -46,6 +50,12 @@
 
       handleFileSelected(file){
         this.file = file;
+        this.showSetParameters = true;
+      },
+
+      handleDoUpload(){
+        this.showSetParameters = false;
+        this.uploadProgressShow = true;
       }
 
     }

@@ -84,6 +84,7 @@
       <v-btn
         color="primary"
         text
+        @click="handleUpload"
       >
         Next
       </v-btn>
@@ -108,6 +109,15 @@ export default {
       allowExpire : false,
       allowPassword : false
     }
+  },
+
+  methods : {
+
+    handleUpload(){
+      this.$emit('doUpload')
+    }
+
+
   }
 
 }
