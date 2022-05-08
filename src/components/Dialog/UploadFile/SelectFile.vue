@@ -48,13 +48,15 @@ export default {
     dragFile(e) {
       e.preventDefault();
       this.file = e.dataTransfer.files[0];
+      this.$store.state.currentFileData.file = this.file;
       console.log(this.file);
       this.$emit('fileSelected', this.file);
     },
 
     handleChange(e) {
       this.file = e.target.files[0];
-      console.log(this.file);
+      this.$store.state.currentFileData.file = this.file;
+      console.log("ch" , this.$store.state.currentFileData.file);
       this.$emit('fileSelected', this.file);
     },
 

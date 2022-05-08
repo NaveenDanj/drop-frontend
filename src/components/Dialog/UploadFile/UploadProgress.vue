@@ -14,17 +14,22 @@
                 :rotate="-90"
                 :size="250"
                 :width="15"
-                :value="75"
+                :value="uploadedValue"
                 color="primary"
             >
-            {{ 75 }} %
+            {{ uploadedValue }} %
             </v-progress-circular>
 
         </v-card-text>
 
     </v-card>
 
-
-
-
 </template>
+
+<script>
+
+    export default {
+        props : ['uploadedValue']
+    }
+
+</script>

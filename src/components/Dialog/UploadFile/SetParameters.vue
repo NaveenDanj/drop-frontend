@@ -114,6 +114,7 @@ export default {
   methods : {
 
     handleUpload(){
+      this.$store.commit('setProceedToUpload' , true)
       this.$emit('doUpload')
     }
 
