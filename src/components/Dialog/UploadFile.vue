@@ -69,6 +69,16 @@
         let formData = new FormData();
         formData.append('is_last', this.chunks.length === 1);
         formData.append('file', this.chunks[0], `${this.file.name}.part`);
+
+        if(this.chunks.length === 1){
+          formData.append('isPasswordProtected' , this.$store.state.currentFileData.havePassword);
+          formData.append('password' , this.$store.state.currentFileData.password);
+          formData.append('isDayExpired' , this.$store.state.currentFileData.expireDateAdded);
+          formData.append('expired_at' , this.$store.state.currentFileData.expireDate);
+          formData.append('isDownloadExpired' , this.$store.state.currentFileData.expireCountAdded);
+          formData.append('download_expired_at' , this.$store.state.currentFileData.expireCount);
+        }
+
         return formData;
       },
 
@@ -95,9 +105,7 @@
 
         try{
 
-          console.log('the data is : ' , this.formData);
-
-          await api.post('/api/upload-file' , this.formData , {
+          let response = await api.post('/api/upload-file' , this.formData , {
 
             headers : {
               'Content-Type': 'multipart/form-data'
@@ -105,12 +113,11 @@
 
             onUploadProgress : event => {
               this.uploaded += event.loaded;
-              console.log()
             }
-          
           });
 
           this.chunks.shift();
+          console.log(response);
 
         }catch(e){
           console.log(e);

@@ -38,7 +38,7 @@
             outlined
             label="Expire After (days)"
             dense
-            v-model="fileType"
+            v-model="expireDate"
             :items="[1  , 2 , 5 , 7]"
             prepend-icon="mdi-clock"
             :disabled="!allowExpire"
@@ -47,6 +47,7 @@
           <v-checkbox
             v-model="allowExpire"
             class="my-auto ml-2"
+            @change="test"
           />
 
         </div>
@@ -102,20 +103,34 @@ export default {
 
   data(){
     return {
+      allowPassword : false,
       password : null,
-      fileType : 1,
-      downloads : 1,
       allowDownload : false,
+      downloads : 1,
       allowExpire : false,
-      allowPassword : false
+      expireDate : 1,
     }
   },
 
   methods : {
 
     handleUpload(){
-      this.$store.commit('setProceedToUpload' , true)
-      this.$emit('doUpload')
+
+      this.$store.commit('setFileParameters', {
+        havePassword : this.allowPassword,
+        password : this.password,
+        allowExpire : this.allowExpire,
+        expireDate : this.expireDate * 86400000,
+        expireCountAdded : this.allowDownload,
+        expireCount : this.downloads
+      });
+
+      this.$store.commit('setProceedToUpload' , true);
+      this.$emit('doUpload');
+    },
+
+    test(){
+      console.log(this.allowExpire);
     }
 
 

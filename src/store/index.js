@@ -22,6 +22,15 @@ export default new Vuex.Store({
 
     setProceedToUpload(state, payload) {
       state.currentFileData.proceedtoUpload = payload
+    },
+
+    setFileParameters(state , payload){
+      state.currentFileData.havePassword = payload.havePassword;
+      state.currentFileData.password = payload.password;
+      state.currentFileData.expireDateAdded = payload.expireDate;
+      state.currentFileData.expireDate = payload.expireDate;
+      state.currentFileData.expireCountAdded = payload.expireCountAdded;
+      state.currentFileData.expireCount = payload.expireCount;
     }
     
   },
