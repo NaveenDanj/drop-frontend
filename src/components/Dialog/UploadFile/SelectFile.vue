@@ -1,6 +1,17 @@
 <template>
   <v-card>
-    <v-card-title class="text-h5 #1D1D1F"> Upload File </v-card-title>
+    <v-card-title class="text-h5 #1D1D1F">
+
+      Upload File
+      <v-spacer></v-spacer>
+
+      <v-btn rounded icon
+          @click="close"
+      >
+          <v-icon>mdi-close</v-icon>
+      </v-btn>
+
+    </v-card-title>
 
     <v-divider></v-divider>
 
@@ -45,6 +56,11 @@ export default {
   },
 
   methods: {
+
+    close(){
+      this.$emit('close');
+    },
+
     dragFile(e) {
       e.preventDefault();
       this.file = e.dataTransfer.files[0];

@@ -1,13 +1,33 @@
 
 <template>
-  <div style="min-height: 100vh" class="gradient-background"></div>
+  <div style="min-height: 100vh" class="gradient-background d-flex justify-center align-center" >
+    
+    <div>
+      <UploadFileHomePage /><br/>
+      <!-- <center><label style="color : white; font-size : 20px;">Upload</label></center> -->
+    </div>
+    
+
+  </div>
 </template>
 
 <script>
+
+import UploadFileHomePage from '../components/Dialog/UploadFileHomePage.vue';
+
 export default {
+
+  components : {
+    UploadFileHomePage
+  },
+
   name: "Home",
+
 };
+
 </script>
+
+
 
 <style scoped>
 .gradient-background {

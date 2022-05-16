@@ -37,12 +37,12 @@
                             dark 
                             readonly 
                             style="width : 100%;"
-                            :value="$store.state.uploadedFile.password"
+                            :value="$store.state.currentFileData.password"
                         />
 
                         <label>Your Link</label><br/><br/>
 
-                        <label>https://bucket.wondersoftinno.com/getfile/{{ $store.state.uploadedFile.fileID }}</label><br/>
+                        <label ref="fileurl">https://bucket.wondersoftinno.com/getfile/{{ $store.state.uploadedFile.fileID }}</label><br/>
 
                         <v-btn
                             outlined
@@ -50,6 +50,7 @@
                             rounded
                             dark
                             class="mt-5 mb-5"
+                            @click="copyToClipBoard"
                         >
                             Copy Link
                         </v-btn>
@@ -73,6 +74,12 @@ export default {
 
         close(){
             this.$emit('close');
+        },
+
+        copyToClipBoard(){
+
+            let copyText = `https://bucket.wondersoftinno.com/getfile/${ this.$store.state.uploadedFile.fileID }`;
+            navigator.clipboard.writeText(copyText);
         }
 
     }
