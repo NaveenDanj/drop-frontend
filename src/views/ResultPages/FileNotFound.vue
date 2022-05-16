@@ -21,8 +21,6 @@
             
         </v-container>
             
-
-
     </div>
 
 </template>

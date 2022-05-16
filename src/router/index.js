@@ -26,6 +26,11 @@ const routes = [
     component: () => import('../views/Dashboard/Layout.vue')
   },
   {
+    path: '/getfile/:file',
+    name : 'CheckFile',
+    component : () => import('../views/CheckFile')
+  },
+  {
     path: '/success',
     name: 'Success',
     component: () => import('../views/ResultPages/SuccessDownload.vue')

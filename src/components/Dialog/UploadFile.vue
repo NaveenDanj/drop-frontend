@@ -143,7 +143,6 @@
           
 
           this.chunks.shift();
-          console.log(response);
 
           if(response.data.success){
             this.showUploadResult = true;
