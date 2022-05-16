@@ -28,5 +28,28 @@
 </template>
 
 <script>
-export default {};
+import FileHandle from '../Repository/FileHandle';
+
+export default {
+
+    async created(){
+
+        try{
+
+            let fileid = this.$route.params.fileid
+            let data = await FileHandle.checkFile(fileid);
+            console.log(data);
+
+        }catch(err){
+
+            if(err.response.status === 404){
+                this.$router.push('/filenotfound')
+            }
+
+        }
+        
+
+    }
+
+};
 </script>

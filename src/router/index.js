@@ -26,7 +26,7 @@ const routes = [
     component: () => import('../views/Dashboard/Layout.vue')
   },
   {
-    path: '/getfile/:file',
+    path: '/getfile/:fileid',
     name : 'CheckFile',
     component : () => import('../views/CheckFile')
   },
