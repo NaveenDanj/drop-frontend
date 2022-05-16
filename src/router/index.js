@@ -29,6 +29,11 @@ const routes = [
     path: '/success',
     name: 'Success',
     component: () => import('../views/ResultPages/SuccessDownload.vue')
+  },
+  {
+    path: '/filenotfound',
+    name: 'FileNotFound',
+    component: () => import('../views/ResultPages/FileNotFound.vue')
   }
 ]
 
