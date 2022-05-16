@@ -16,7 +16,7 @@
       <SelectFile v-if="!file" @fileSelected="handleFileSelected" />
       <SetParameters v-if="showSetParameters" :file="file" @doUpload="handleDoUpload" />
       <UploadProgress  v-if="uploadProgressShow" :uploadedValue="progress"  />
-      <UploadResults v-if="showUploadResult" />
+      <UploadResults v-if="showUploadResult" @close="closeDialog" />
 
     </v-dialog>
 
@@ -33,7 +33,6 @@
 
 
   import api from '../../API';
-  import Resumable from 'resumablejs';
 
   export default {
 
@@ -43,39 +42,6 @@
           this.upload();
         }
       },
-
-    },
-
-    created(){
-
-      // this.r = new Resumable({
-
-      //   target:'http://127.0.0.1:8000/api/upload-file', 
-
-      //   maxFiles : 1,
-      //   chunkSize: 1 * 1024 * 1024,
-      //   testChunks : false,
-      //   throttleProgressCallbacks : 1
-
-
-      // });
-
-      // this.r.on('fileSuccess', function(file,message){
-      //   let response = JSON.parse(message);
-      //   console.log('the res is ' , response);
-      // });
-
-      // this.r.on('fileProgress', function (file) {
-
-      //   console.log('the progress ' , r.progress() * 100);
-      //   this.progress = r.progress() * 100;
-
-      // });
-
-      // this.r.on('fileError', function(file, message){
-      //   console.log('the error is ' , message);
-      // });
-
 
     },
 
@@ -138,23 +104,18 @@
       },
 
       handleUpload(){
-
-        // this.r.addFile(this.file);
-
-        // console.log("it ran : " , this.r);
-
-        // this.r.opts.query.isPasswordProtected = this.$store.state.currentFileData.havePassword;
-        // this.r.opts.query.password = this.$store.state.currentFileData.password;
-        // this.r.opts.query.isDayExpired = this.$store.state.currentFileData.expireDateAdded;
-        // this.r.opts.query.expired_at = this.$store.state.currentFileData.expireDate;
-        // this.r.opts.query.isDownloadExpired = this.$store.state.currentFileData.expireCountAdded;
-        // this.r.opts.query.download_expired_at = this.$store.state.currentFileData.expireCount;
-        
-        // this.r.upload();
-
         this.createChunks();
-        
+      },
 
+      closeDialog(){
+        this.dialog = false;
+        this.file = null;
+        this.showSetParameters = false;
+        this.showUploadResult = false;
+        this.uploadProgressShow = false;
+        this.chunks = [];
+        this.uploaded = 0;
+        
       },
 
       // wait some time for resolve the too many request error
