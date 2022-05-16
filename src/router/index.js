@@ -24,6 +24,11 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/Dashboard/Layout.vue')
+  },
+  {
+    path: '/success',
+    name: 'Success',
+    component: () => import('../views/ResultPages/SuccessDownload.vue')
   }
 ]
 
