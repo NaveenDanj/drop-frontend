@@ -15,7 +15,8 @@ export default new Vuex.Store({
       expireCountAdded : false,
       expireCount : null,
       proceedtoUpload : false
-    }
+    },
+    uploadedFile : null
 
   },
   mutations: {
@@ -31,6 +32,10 @@ export default new Vuex.Store({
       state.currentFileData.expireDate = payload.expireDate;
       state.currentFileData.expireCountAdded = payload.expireCountAdded;
       state.currentFileData.expireCount = payload.expireCount;
+    },
+
+    setUploadedFile(state, payload) {
+      state.uploadedFile = payload;
     }
     
   },
