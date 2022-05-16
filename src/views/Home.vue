@@ -1,12 +1,30 @@
+
 <template>
-  <div>
-    asd
-  </div>
+  <div style="min-height: 100vh" class="gradient-background"></div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
-}
+  name: "Home",
+};
 </script>
+
+<style scoped>
+.gradient-background {
+  background: linear-gradient(300deg, deepskyblue, darkviolet, blue);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+</style>
