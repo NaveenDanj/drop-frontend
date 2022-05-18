@@ -13,6 +13,16 @@ export default {
                 'Content-Type': 'application/octet-stream',
             }
         })
-    }
+    },
+
+    checkPassword : async (form) => {
+
+        return API.post('/api/check-password', form , {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+    },
 
 }

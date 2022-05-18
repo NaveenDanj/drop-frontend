@@ -31,6 +31,11 @@ const routes = [
     component : () => import('../views/CheckFile')
   },
   {
+    path: '/passwordprotected/:fileid',
+    name : 'PasswordProtected',
+    component : () => import('../views/ResultPages/PasswordProtected.vue')
+  },
+  {
     path: '/success/:fileid',
     name: 'Success',
     component: () => import('../views/ResultPages/SuccessDownload.vue')

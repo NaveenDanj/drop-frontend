@@ -22,38 +22,35 @@
       <div class="d-flex justify-center mt-5">
         <h1 style="font-size: 50px">Wait a moment...</h1>
       </div>
-
     </v-container>
   </div>
 </template>
 
 <script>
-import FileHandle from '../Repository/FileHandle';
+import FileHandle from "../Repository/FileHandle";
 
 export default {
+  async created() {
+    try {
+      let fileid = this.$route.params.fileid;
+      let data = await FileHandle.checkFile(fileid);
+      console.log(data);
 
-    async created(){
+      // check if password protected
+      if (data.data.file.isPasswordProtected) {
+        this.$router.push(`/passwordprotected/${data.data.file.fileID}`);
+        return;
+      }
 
-        try{
-
-            let fileid = this.$route.params.fileid
-            let data = await FileHandle.checkFile(fileid);
-            console.log(data);
-
-            if(data.status){
-                this.$router.push(`/success/${data.data.file.fileID}`)
-            }
-
-        }catch(err){
-
-            if(err.response.status != 200){
-                this.$router.push('/filenotfound')
-            }
-
-        }
-        
-
+      if (data.status) {
+        this.$router.push(`/success/${data.data.file.fileID}`);
+        return;
+      }
+    } catch (err) {
+      if (err.response.status != 200) {
+        this.$router.push("/filenotfound");
+      }
     }
-
+  },
 };
 </script>
