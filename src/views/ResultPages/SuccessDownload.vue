@@ -14,13 +14,16 @@
 
             <center>
                 <p>
-                    Requested file is ready to download. Download will start automatically. If download does not start, please click the button below.
+                    Requested file is ready to download. Please click on the button below to start download.
                 </p>
 
                 <v-btn
                     outlined
                     color="success"
                     rounded
+                    :href="download_link"
+                    target="_blank"
+                    :disabled="download_link == null"
                 >
                     Download
                 </v-btn>
@@ -39,26 +42,22 @@ import FileHandle from '../../Repository/FileHandle'
 
 export default {
     
+    data(){
+
+        return {
+            download_link : null,
+        }
+
+    },
+
     async created(){
 
         try{
 
-            let fileid = this.$route.params.fileid
-
-            let fileData = await FileHandle.checkFile(fileid)
-
-            // get filename and extension
-            let filename = fileData.data.file.name
-
-            let data = await FileHandle.downloadFile(fileid);
-            console.log(data);
-            // download file using axios data
-            let url = window.URL.createObjectURL( new Blob([data.data] , {type : 'application/octet-stream'}));
-            let link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', filename);
-            document.body.appendChild(link);
-            link.click();
+            let fileid = this.$route.params.fileid;
+            let fileData = await FileHandle.checkFile(fileid);
+            let token = fileData.data.token;
+            this.download_link = `http://127.0.0.1:8000/api/getfile/${fileData.data.file.fileID}/${token}`;
         }catch(err){
             console.log(err);
         }
