@@ -40,6 +40,10 @@ export default {
             let data = await FileHandle.checkFile(fileid);
             console.log(data);
 
+            if(data.status){
+                this.$router.push(`/success/${data.data.file.fileID}`)
+            }
+
         }catch(err){
 
             if(err.response.status === 404){

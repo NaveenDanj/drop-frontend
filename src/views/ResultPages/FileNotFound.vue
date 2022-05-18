@@ -13,6 +13,7 @@
                         outlined
                         rounded
                         color="red"
+                        @click="() => $router.push('/') "
                     >
                         Back
                     </v-btn>

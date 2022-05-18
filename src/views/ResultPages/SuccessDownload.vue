@@ -32,5 +32,39 @@
 
     </div>
 
-
 </template>
+
+<script>
+import FileHandle from '../../Repository/FileHandle'
+
+export default {
+    
+    async created(){
+
+        try{
+
+            let fileid = this.$route.params.fileid
+
+            let fileData = await FileHandle.checkFile(fileid)
+
+            // get filename and extension
+            let filename = fileData.data.file.name
+
+            let data = await FileHandle.downloadFile(fileid);
+            console.log(data);
+            // download file using axios data
+            let url = window.URL.createObjectURL( new Blob([data.data] , {type : 'application/octet-stream'}));
+            let link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+        }catch(err){
+            console.log(err);
+        }
+
+    }
+
+
+}
+</script>
