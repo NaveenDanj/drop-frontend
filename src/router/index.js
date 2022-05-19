@@ -44,7 +44,12 @@ const routes = [
     path: '/filenotfound',
     name: 'FileNotFound',
     component: () => import('../views/ResultPages/FileNotFound.vue')
-  }
+  },
+  {
+    path: '/maintenance',
+    name: 'Maintenance',
+    component: () => import('../views/Maintenance.vue')
+  },
 ]
 
 const router = new VueRouter({
