@@ -16,7 +16,8 @@ export default new Vuex.Store({
       expireCount : null,
       proceedtoUpload : false
     },
-    uploadedFile : null
+    uploadedFile : null,
+    currentUser : null
 
   },
   mutations: {
@@ -36,6 +37,10 @@ export default new Vuex.Store({
 
     setUploadedFile(state, payload) {
       state.uploadedFile = payload;
+    },
+
+    setCurrentUser(state , payload){
+      state.currentUser = payload;
     }
     
   },
