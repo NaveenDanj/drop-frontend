@@ -133,9 +133,9 @@
               'Content-Type': 'application/octet-stream'
             },
 
-            onUploadProgress : event => {
+            onUploadProgress : (event) => {
               this.uploaded += event.loaded;
-              console.log("upload size : " , this.uploaded , event.loaded);
+              console.log("upload size : " , this.uploaded , event.loaded , this.file.size);
             }
           });
 
@@ -158,6 +158,9 @@
       },
 
       createChunks() {
+
+        console.log('the file is : ' , this.file);
+
         let size = 2048 *1000 , chunks = Math.ceil(this.file.size / size);
 
         for (let i = 0; i < chunks; i++) {

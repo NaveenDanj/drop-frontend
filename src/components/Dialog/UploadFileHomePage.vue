@@ -75,6 +75,7 @@
     computed: {
 
       progress() {
+        console.log(this.uploaded);
         return Math.floor((this.uploaded * 100) / this.file.size);
       },
 
