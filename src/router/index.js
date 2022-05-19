@@ -13,17 +13,20 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Auth/Login.vue')
+    component: () => import('../views/Auth/Login.vue'),
+    meta: { maintenance: true} 
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('../views/Auth/Register.vue')
+    component: () => import('../views/Auth/Register.vue'),
+    meta: { maintenance: true} 
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: () => import('../views/Dashboard/Layout.vue')
+    component: () => import('../views/Dashboard/Layout.vue'),
+    meta: { maintenance: true} 
   },
   {
     path: '/getfile/:fileid',
@@ -57,5 +60,23 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.maintenance)) {
+
+    if (to.path !== '/maintenance') {
+      next({
+        path: '/maintenance'
+      })
+    }
+    
+  } else {
+    next();
+  }
+})
+
+
 
 export default router
