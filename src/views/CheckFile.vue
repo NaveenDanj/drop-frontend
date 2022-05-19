@@ -8,7 +8,7 @@
       style="
         border: 1px solid #27272a;
         width: 30%;
-        min-width: 400px;
+        min-width: 350px;
         color: #a6a6a6;
       "
     >
@@ -20,7 +20,7 @@
       </div>
 
       <div class="d-flex justify-center mt-5">
-        <h1 style="font-size: 50px">Wait a moment...</h1>
+        <h1 style="font-size: 20px">Wait a moment...</h1>
       </div>
     </v-container>
   </div>
