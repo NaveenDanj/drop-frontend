@@ -57,7 +57,8 @@ export default {
             let fileid = this.$route.params.fileid;
             let fileData = await FileHandle.checkFile(fileid);
             let token = fileData.data.token;
-            this.download_link = `http://127.0.0.1:8000/api/getfile/${fileData.data.file.fileID}/${token}`;
+            let back = process.env.VUE_APP_BACKEND
+            this.download_link = `${back}/api/getfile/${fileData.data.file.fileID}/${token}`;
         }catch(err){
             console.log(err);
         }

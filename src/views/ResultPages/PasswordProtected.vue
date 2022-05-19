@@ -78,7 +78,8 @@ export default {
                 console.log(data);
 
                 if(data.status == 200){
-                    window.location.href = `http://127.0.0.1:8000/api/get-password-file/${this.form.linkid}/${data.data.token}/${this.form.password}`;
+                    let back = process.env.VUE_APP_BACKEND
+                    window.location.href = `${back}/api/get-password-file/${this.form.linkid}/${data.data.token}/${this.form.password}`;
 
                 }else{
                     this.error = data.data.message;
