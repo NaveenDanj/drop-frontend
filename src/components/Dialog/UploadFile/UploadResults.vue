@@ -42,7 +42,7 @@
 
                         <label>Your Link</label><br/><br/>
 
-                        <label ref="fileurl">https://bucket.wondersoftinno.com/getfile/{{ $store.state.uploadedFile.fileID }}</label><br/>
+                        <label ref="fileurl">https://drop.wondersoftinno.com/getfile/{{ $store.state.uploadedFile.fileID }}</label><br/>
 
                         <v-btn
                             outlined
@@ -78,7 +78,7 @@ export default {
 
         copyToClipBoard(){
 
-            let copyText = `https://bucket.wondersoftinno.com/getfile/${ this.$store.state.uploadedFile.fileID }`;
+            let copyText = `https://drop.wondersoftinno.com/getfile/${ this.$store.state.uploadedFile.fileID }`;
             navigator.clipboard.writeText(copyText);
         }
 

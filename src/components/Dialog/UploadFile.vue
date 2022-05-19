@@ -60,6 +60,7 @@
         showSetParameters : false,
         showUploadResult : false,
         chunks: [],
+        chunkCount : 0,
         uploaded: 0,
         r : null
       }
@@ -68,7 +69,9 @@
     computed: {
 
       progress() {
-        return Math.floor((this.uploaded * 100) / this.file.size);
+        // return Math.floor((this.uploaded * 100) / this.file.size);
+        let f = (this.chunkCount - this.chunks.length) * 100;
+        return Math.floor( f / this.chunkCount );
       },
 
       formData() {
@@ -130,7 +133,9 @@
           let response = await api.post('/api/upload-file' , this.formData , {
 
             headers : {
-              'Content-Type': 'application/octet-stream'
+              'Content-Type': 'application/octet-stream',
+              'Access-Control-Allow-Origin' : '*',
+              "Access-Control-Allow-Credentials" : true,
             },
 
             onUploadProgress : (event) => {
@@ -161,7 +166,8 @@
 
         console.log('the file is : ' , this.file);
 
-        let size = 2048 *1000 , chunks = Math.ceil(this.file.size / size);
+        let size = 2048 * 1000 , chunks = Math.ceil(this.file.size / size);
+        this.chunkCount = chunks;
 
         for (let i = 0; i < chunks; i++) {
           this.chunks.push(this.file.slice(i * size, Math.min(i * size + size, this.file.size), this.file.type));

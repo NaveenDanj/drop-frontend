@@ -1,8 +1,14 @@
 import axios from 'axios'
 
+let back = process.env.VUE_APP_BACKEND
 // Create a new axios instance
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000/'
+    baseURL: `${back}/`,
+    headers: {
+        'Access-Control-Allow-Origin' : '*',
+        "Access-Control-Allow-Credentials" : true,
+    },
+
 });
 
 export default api

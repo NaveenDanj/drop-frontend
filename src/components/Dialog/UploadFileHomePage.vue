@@ -149,7 +149,9 @@
           let response = await api.post('/api/upload-file' , this.formData , {
 
             headers : {
-              'Content-Type': 'application/octet-stream'
+              'Content-Type': 'application/octet-stream',
+              'Access-Control-Allow-Origin' : '*',
+              "Access-Control-Allow-Credentials" : true,
             },
 
             onUploadProgress : event => {

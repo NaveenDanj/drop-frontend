@@ -2,11 +2,24 @@
 <template>
   <div style="min-height: 100vh" class="gradient-background d-flex justify-center align-center" >
     
-    <div>
+    <div style="width : 100%">
       <UploadFileHomePage /><br/>
       <!-- <center><label style="color : white; font-size : 20px;">Upload</label></center> -->
+      <center><div style="color : white; width : 50%" class="d-flex justify-space-between"  >
+
+        <v-btn icon dark x-large fab outlined @click="() => $router.push('/login')">
+          <v-icon class="white--text"> mdi-login-variant</v-icon>
+        </v-btn>
+
+        <h3>DROP</h3>
+
+        <v-btn icon dark x-large fab outlined @click="() => $router.push('/register')">
+          <v-icon class="white--text">mdi-account-plus</v-icon>
+        </v-btn>
+
+
+      </div></center>
     </div>
-    
 
   </div>
 </template>
