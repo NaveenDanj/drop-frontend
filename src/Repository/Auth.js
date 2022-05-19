@@ -12,6 +12,14 @@ export default {
             }
         });
     
+    },
+
+    getCurrentUser : async () => {
+        return API.get('/api/user' , {
+            headers: {
+                authorization: "Bearer " + localStorage.getItem('token'),
+            },
+        });
     }
 
 

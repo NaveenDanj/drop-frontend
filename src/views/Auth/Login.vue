@@ -16,10 +16,21 @@
                 <p>Login to stay connected.</p>
             </div>
 
-            <v-form>
+            <v-form @submit="submit">
 
-                <v-text-field outlined dense placeholder="Email" color="#A6A6A6" dark/>
-                <v-text-field outlined dense placeholder="Password" color="#A6A6A6" dark/>
+                <v-alert
+                    :value="true"
+                    type="error"
+                    color="error"
+                    icon="mdi-alert-circle"
+                    dismissible
+                    v-if="error != null"
+                >
+                    {{ error }}
+                </v-alert>
+
+                <v-text-field type="email" v-model="form.email" outlined dense placeholder="Email" color="#A6A6A6" dark/>
+                <v-text-field type="password" v-model="form.password" outlined dense placeholder="Password" color="#A6A6A6" dark/>
 
                 <div class="d-flex justify-space-between" >
                     <!-- remember me radio button -->
@@ -28,7 +39,7 @@
                 </div>
 
                 <div class="d-flex justify-center" >
-                    <v-btn color="purple" rounded dark>Sign In</v-btn>
+                    <v-btn type="submit" color="purple" rounded dark>Sign In</v-btn>
                 </div>
 
                 <div class="d-flex justify-center mt-5" >
@@ -46,3 +57,47 @@
 
 
 </template>
+
+<script>
+
+import Auth from '../../Repository/Auth';
+
+export default {
+    
+    data(){
+
+        return {
+            form : {
+                email : '',
+                password : ''
+            },
+
+            error : null
+        }
+
+    },
+
+    methods : {
+
+        async submit(e){
+            e.preventDefault();
+
+            try{
+                this.error = null;
+                let res = await Auth.login(this.form);
+                console.log(res);
+                localStorage.setItem('token' , res.data.token);
+                this.$store.commit('setCurrentUser' , res.data.user);
+                this.$router.push('/dashboard');
+            }catch(err){
+                console.log(err.response.data.message);
+                this.error = err.response.data.message;
+            }
+
+
+        }
+
+    }
+
+}
+</script>
