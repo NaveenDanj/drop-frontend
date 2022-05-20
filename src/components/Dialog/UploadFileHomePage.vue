@@ -67,6 +67,7 @@
         showSetParameters : false,
         showUploadResult : false,
         chunks: [],
+        chunkCount : 0,
         uploaded: 0,
         r : null
       }
@@ -75,8 +76,8 @@
     computed: {
 
       progress() {
-        console.log(this.uploaded);
-        return Math.floor((this.uploaded * 100) / this.file.size);
+        let f = (this.chunkCount - this.chunks.length) * 100;
+        return Math.floor( f / this.chunkCount );
       },
 
       formData() {
@@ -180,6 +181,7 @@
 
       createChunks() {
         let size = 2048 *1000 , chunks = Math.ceil(this.file.size / size);
+        this.chunkCount = chunks;
 
         for (let i = 0; i < chunks; i++) {
           this.chunks.push(this.file.slice(i * size, Math.min(i * size + size, this.file.size), this.file.type));
