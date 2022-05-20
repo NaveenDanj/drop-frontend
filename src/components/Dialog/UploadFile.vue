@@ -140,8 +140,8 @@
 
             onUploadProgress : (event) => {
               this.uploaded += event.loaded;
-              console.log("upload size : " , this.uploaded , event.loaded , this.file.size);
             }
+            
           });
 
           // resolve too many requests error
