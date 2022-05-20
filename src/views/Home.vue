@@ -22,7 +22,7 @@
         <v-icon class="white--text"> mdi-home</v-icon>
       </v-btn>
 
-      <v-btn icon dark  fab outlined @click="() => $router.push('/register')">
+      <v-btn icon dark  fab outlined @click="handleLogout">
         <v-icon class="white--text">mdi-logout-variant </v-icon>
       </v-btn>
       
@@ -65,6 +65,7 @@
 
 <script>
 import UploadFileHomePage from "../components/Dialog/UploadFileHomePage.vue";
+import Auth from '../Repository/Auth';
 
 export default {
   components: {
@@ -72,6 +73,23 @@ export default {
   },
 
   name: "Home",
+
+  methods : {
+
+    async handleLogout(){
+
+      try{
+        let res = await Auth.logout();
+        this.$router.push('/login');
+      }catch(err){
+        console.log(err);
+      }
+
+    }
+
+  }
+
+
 };
 </script>
 
