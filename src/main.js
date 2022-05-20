@@ -32,8 +32,6 @@ async function mountApp(){
       },
     });
 
-    console.log('the user is : ' , user);
-
     store.commit('setCurrentUser' , user.data);
 
   }catch(err){

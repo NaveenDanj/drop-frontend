@@ -1,13 +1,44 @@
 
 <template>
-  <div style="min-height: 100vh" class="gradient-background d-flex justify-center align-center" >
-    
-    <div style="width : 100%">
-      <UploadFileHomePage /><br/>
-      <!-- <center><label style="color : white; font-size : 20px;">Upload</label></center> -->
-      <center><div style="color : white; width : 50%" class="d-flex justify-space-between"  >
+  <div style="min-height: 100vh" class="gradient-background">
 
-        <v-btn icon dark x-large fab outlined @click="() => $router.push('/login')">
+    <div v-if="$store.state.currentUser == null" class="d-flex pr-5 pt-5">
+      <v-spacer></v-spacer>
+      
+      <v-btn class="mr-5" icon dark  fab outlined @click="() => $router.push('/login')">
+        <v-icon class="white--text"> mdi-login-variant</v-icon>
+      </v-btn>
+
+      <v-btn icon dark  fab outlined @click="() => $router.push('/register')">
+        <v-icon class="white--text">mdi-account-plus</v-icon>
+      </v-btn>
+
+    </div>
+
+    <div v-else class="d-flex pr-5 pt-5">
+      <v-spacer></v-spacer>
+      
+      <v-btn class="mr-5" icon dark  fab outlined @click="() => $router.push('/dashboard')">
+        <v-icon class="white--text"> mdi-home</v-icon>
+      </v-btn>
+
+      <v-btn icon dark  fab outlined @click="() => $router.push('/register')">
+        <v-icon class="white--text">mdi-logout-variant </v-icon>
+      </v-btn>
+      
+    </div>
+
+
+    <div style="min-height: 100vh" class="d-flex justify-center align-center">
+      <div style="width: 100%">
+        <UploadFileHomePage /><br />
+        <!-- <center><label style="color : white; font-size : 20px;">Upload</label></center> -->
+        <center>
+          <div
+            style="color: white; width: 50%"
+            class="d-flex justify-space-between"
+          >
+            <!-- <v-btn icon dark x-large fab outlined @click="() => $router.push('/login')">
           <v-icon class="white--text"> mdi-login-variant</v-icon>
         </v-btn>
 
@@ -15,29 +46,33 @@
 
         <v-btn icon dark x-large fab outlined @click="() => $router.push('/register')">
           <v-icon class="white--text">mdi-account-plus</v-icon>
-        </v-btn>
+        </v-btn> -->
 
+            <p>
+              DROP is the simplest way to send your files around the world.
+              Share large files and photos. Transfer for free. File sharing made
+              easy!
+            </p>
+          </div>
+        </center>
+      </div>
 
-      </div></center>
     </div>
 
   </div>
+
 </template>
 
 <script>
-
-import UploadFileHomePage from '../components/Dialog/UploadFileHomePage.vue';
+import UploadFileHomePage from "../components/Dialog/UploadFileHomePage.vue";
 
 export default {
-
-  components : {
-    UploadFileHomePage
+  components: {
+    UploadFileHomePage,
   },
 
   name: "Home",
-
 };
-
 </script>
 
 

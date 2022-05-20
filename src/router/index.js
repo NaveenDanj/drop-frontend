@@ -16,19 +16,20 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('../views/Auth/Login.vue'),
-    // meta: { maintenance: true} 
+    meta: { maintenance: true} 
   },
   {
     path: '/register',
     name: 'Register',
     component: () => import('../views/Auth/Register.vue'),
-    // meta: { maintenance: true} 
+    meta: { maintenance: true} 
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/Dashboard/Layout.vue'),
-    meta: { requiresAuth: true} 
+    // meta: { requiresAuth: true}
+    meta: { maintenance : true}
   },
   {
     path: '/getfile/:fileid',
