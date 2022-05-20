@@ -14,6 +14,20 @@ export default {
     
     },
 
+    logout : async () => {
+
+        return API.get('/api/auth/logout', {
+
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            }
+
+        });
+
+    },
+
     getCurrentUser : async () => {
         return API.get('/api/user' , {
             headers: {
