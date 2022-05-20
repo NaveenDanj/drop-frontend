@@ -3,7 +3,7 @@ import API from '../API';
 
 export default {
 
-    login : async (form) => {
+    login : (form) => {
             
         return API.post('/api/auth/login', form , {
             headers: {
@@ -14,7 +14,7 @@ export default {
     
     },
 
-    logout : async () => {
+    logout : () => {
 
         return API.get('/api/auth/logout', {
 
@@ -28,7 +28,7 @@ export default {
 
     },
 
-    getCurrentUser : async () => {
+    getCurrentUser : () => {
         return API.get('/api/user' , {
             headers: {
                 authorization: "Bearer " + localStorage.getItem('token'),
