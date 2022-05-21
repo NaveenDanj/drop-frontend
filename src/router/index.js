@@ -31,6 +31,12 @@ const routes = [
     meta: { maintenance: false} 
   },
   {
+    path: '/recoverpasswordsuccess',
+    name: 'RecoverPasswordSuccess',
+    component: () => import('../views/Auth/ResetPassword/RecoverPasswordSuccess.vue'),
+    meta: { maintenance: false} 
+  },
+  {
     path: '/resetpwd/:token',
     name: 'ResetPassword',
     component: () => import('../views/Auth/ResetPassword/ResetPassword.vue'),
