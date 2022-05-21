@@ -86,10 +86,10 @@ const routes = [
     component: () => import('../views/ErrorPages/SomethingWentWrong.vue')
   },
   {
-    path: '/404',
+    path: '*',
     name: 'ErrorNotFound',
     component: () => import('../views/ErrorPages/404.vue')
-  },
+  }
 ]
 
 const router = new VueRouter({
