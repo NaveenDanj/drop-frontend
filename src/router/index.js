@@ -25,6 +25,12 @@ const routes = [
     meta: { maintenance: false} 
   },
   {
+    path: '/resetpwd',
+    name: 'ResetPassword',
+    component: () => import('../views/Auth/ResetPassword.vue'),
+    meta: { maintenance: false} 
+  },
+  {
     path: '/register',
     name: 'Register',
     component: () => import('../views/Auth/Register.vue'),

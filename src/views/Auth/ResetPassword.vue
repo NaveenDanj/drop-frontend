@@ -9,11 +9,11 @@
             </div>
 
             <div class="d-flex justify-center mt-5">
-                <h1 style="color:white;font-size : 30px;">Recover Password</h1>
+                <h1 style="color:white;font-size : 30px;">Reset Password</h1>
             </div>
 
             <div class="d-flex justify-center mt-5" style="text-align:center">
-                <p>Enter your email address and we'll send you an email with instructions to reset your password.</p>
+                <p>Enter your current password and new password to reset your password.</p>
             </div>
 
             <v-form class="mt-5">
@@ -28,7 +28,9 @@
                     err
                 </v-alert> -->
 
-                <v-text-field type="email"  outlined dense placeholder="Email" color="#A6A6A6" dark/>
+                <v-text-field type="password"  outlined dense placeholder="Current Password" color="#A6A6A6" dark/>
+                <v-text-field type="text"  outlined dense placeholder="New Password" color="#A6A6A6" dark/>
+                <v-text-field type="text"  outlined dense placeholder="Comfirm Password" color="#A6A6A6" dark/>
 
                 
 
