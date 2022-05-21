@@ -80,6 +80,11 @@ const routes = [
     name: 'Maintenance',
     component: () => import('../views/Maintenance.vue')
   },
+  {
+    path: '/error',
+    name: 'Error',
+    component: () => import('../views/ErrorPages/SomethingWentWrong.vue')
+  },
 ]
 
 const router = new VueRouter({
