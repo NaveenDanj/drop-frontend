@@ -28,16 +28,12 @@
                     err
                 </v-alert> -->
 
-                <v-text-field type="password"  outlined dense placeholder="Current Password" color="#A6A6A6" dark/>
                 <v-text-field type="text"  outlined dense placeholder="New Password" color="#A6A6A6" dark/>
                 <v-text-field type="text"  outlined dense placeholder="Comfirm Password" color="#A6A6A6" dark/>
-
-                
 
                 <div class="d-flex justify-center" >
                     <v-btn type="submit" color="purple" rounded dark>Reset</v-btn>
                 </div>
-
 
             </v-form>
             
