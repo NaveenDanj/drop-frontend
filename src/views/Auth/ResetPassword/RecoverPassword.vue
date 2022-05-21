@@ -29,17 +29,6 @@
                     {{ error }}
                 </v-alert>
 
-                <v-alert
-                    :value="true"
-                    type="success"
-                    color="success"
-                    icon="mdi-alert-circle"
-                    dismissible
-                    v-if="success"
-                >
-                    {{ success }}
-                </v-alert>
-
                 <v-progress-linear
                     :active="loading"
                     color="deep-purple accent-4"
@@ -88,7 +77,6 @@ export default {
             },
             loading : false,
             error : null,
-            success : null
         }
 
     },
@@ -107,10 +95,10 @@ export default {
                     let res = await Auth.resetPasswordSendLink(this.form);
                     console.log(res);
                     this.loading = false;
+                    this.$router.push('/recoverlinksuccess');
 
                 }catch(e){
                     this.error = e.response.data.message;
-                    this.success = false;
                     this.loading = false;
                 }
                 
