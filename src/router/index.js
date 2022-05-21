@@ -16,7 +16,7 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('../views/Auth/Login.vue'),
-    meta: { maintenance: false} 
+    meta: { maintenance: true} 
   },
   {
     path: '/register',
