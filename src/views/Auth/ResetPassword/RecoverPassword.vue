@@ -48,8 +48,6 @@
                     height="6"
                 ></v-progress-linear><br />
 
-
-
                 <v-text-field
                     type="email"
                     v-model="form.email" 
@@ -64,27 +62,21 @@
                     ]"
                 />
 
-                
-
                 <div class="d-flex justify-center" >
                     <v-btn type="submit" color="purple" rounded dark>Reset</v-btn>
                 </div>
 
-
             </v-form>
             
-
         </v-container>
 
-
     </div>
-
 
 </template>
 
 <script>
 
-import Auth from '../../Repository/Auth';
+import Auth from '../../../Repository/Auth';
 
 export default {
     
@@ -121,16 +113,12 @@ export default {
                     this.success = false;
                     this.loading = false;
                 }
-
                 
             }
-            
-
 
         }
 
     }
-
 
 }
 </script>
