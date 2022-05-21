@@ -16,19 +16,53 @@
                 <p>Enter your email address and we'll send you an email with instructions to reset your password.</p>
             </div>
 
-            <v-form class="mt-5" @submit="submit">
+            <v-form ref="rForm" class="mt-5" @submit="submit">
 
-                <!-- <v-alert
+                <v-alert
                     :value="true"
                     type="error"
                     color="error"
                     icon="mdi-alert-circle"
                     dismissible
+                    v-if="error"
                 >
-                    err
-                </v-alert> -->
+                    {{ error }}
+                </v-alert>
 
-                <v-text-field type="email" v-model="form.email" outlined dense placeholder="Email" color="#A6A6A6" dark/>
+                <v-alert
+                    :value="true"
+                    type="success"
+                    color="success"
+                    icon="mdi-alert-circle"
+                    dismissible
+                    v-if="success"
+                >
+                    {{ success }}
+                </v-alert>
+
+                <v-progress-linear
+                    :active="loading"
+                    color="deep-purple accent-4"
+                    indeterminate
+                    rounded
+                    height="6"
+                ></v-progress-linear><br />
+
+
+
+                <v-text-field
+                    type="email"
+                    v-model="form.email" 
+                    outlined 
+                    dense 
+                    placeholder="Email" 
+                    color="#A6A6A6" 
+                    dark
+                    :rules="[
+                        v => !!v || 'Email is required',
+                        v => /.+@.+/.test(v) || 'Email must be valid'
+                    ]"
+                />
 
                 
 
@@ -49,6 +83,9 @@
 </template>
 
 <script>
+
+import Auth from '../../Repository/Auth';
+
 export default {
     
     data(){
@@ -56,7 +93,40 @@ export default {
         return{
             form : {
                 email : null
+            },
+            loading : false,
+            error : null,
+            success : null
+        }
+
+    },
+
+    methods : {
+
+        async submit(e){
+
+            e.preventDefault();
+
+            if(this.$refs.rForm.validate()){
+
+                try{
+
+                    this.loading = true;
+                    let res = await Auth.resetPasswordSendLink(this.form);
+                    console.log(res);
+                    this.loading = false;
+
+                }catch(e){
+                    this.error = e.response.data.message;
+                    this.success = false;
+                    this.loading = false;
+                }
+
+                
             }
+            
+
+
         }
 
     }
