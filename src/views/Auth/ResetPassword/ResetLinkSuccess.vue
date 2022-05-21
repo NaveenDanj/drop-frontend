@@ -25,7 +25,7 @@
 
       <center>
         <p>
-          A email has been send to youremail@domain.com. Please check for an email from company and click on the included link to reset your password.
+          A email has been send to youremail@domain.com. Please check for an email from company and click on the included link to reset your password. Please check spam folder if you don't see the email.
         </p>
 
         <v-btn
