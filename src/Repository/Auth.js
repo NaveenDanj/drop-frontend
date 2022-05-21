@@ -28,6 +28,28 @@ export default {
 
     },
 
+    resetPasswordSendLink : (form) => {
+
+        return API.post('/api/auth/forgot-password' , form , {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        });
+
+    },
+
+    resetPassword : (form) => {
+
+        return API.post('/api/auth/reset-password' , form , {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        });
+
+    },
+
     getCurrentUser : () => {
         return API.get('/api/user' , {
             headers: {

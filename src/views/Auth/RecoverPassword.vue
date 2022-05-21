@@ -16,7 +16,7 @@
                 <p>Enter your email address and we'll send you an email with instructions to reset your password.</p>
             </div>
 
-            <v-form class="mt-5">
+            <v-form class="mt-5" @submit="submit">
 
                 <!-- <v-alert
                     :value="true"
@@ -28,7 +28,7 @@
                     err
                 </v-alert> -->
 
-                <v-text-field type="email"  outlined dense placeholder="Email" color="#A6A6A6" dark/>
+                <v-text-field type="email" v-model="form.email" outlined dense placeholder="Email" color="#A6A6A6" dark/>
 
                 
 
@@ -47,3 +47,20 @@
 
 
 </template>
+
+<script>
+export default {
+    
+    data(){
+
+        return{
+            form : {
+                email : null
+            }
+        }
+
+    }
+
+
+}
+</script>

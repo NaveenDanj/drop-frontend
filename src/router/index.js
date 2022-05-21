@@ -25,7 +25,7 @@ const routes = [
     meta: { maintenance: false} 
   },
   {
-    path: '/resetpwd',
+    path: '/resetpwd/:token',
     name: 'ResetPassword',
     component: () => import('../views/Auth/ResetPassword.vue'),
     meta: { maintenance: false} 
