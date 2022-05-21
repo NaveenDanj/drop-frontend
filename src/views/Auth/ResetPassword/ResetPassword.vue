@@ -16,20 +16,61 @@
                 <p>Enter your current password and new password to reset your password.</p>
             </div>
 
-            <v-form class="mt-5">
+            <v-form class="mt-5" @submit="submit" ref="rForm">
 
-                <!-- <v-alert
+                <v-alert
                     :value="true"
                     type="error"
                     color="error"
                     icon="mdi-alert-circle"
                     dismissible
+                    v-if="error != null"
                 >
-                    err
-                </v-alert> -->
+                    {{ error }}
+                </v-alert>
 
-                <v-text-field type="text"  outlined dense placeholder="New Password" color="#A6A6A6" dark/>
-                <v-text-field type="text"  outlined dense placeholder="Comfirm Password" color="#A6A6A6" dark/>
+                <v-text-field
+                    type="email"
+                    v-model="form.email" 
+                    outlined 
+                    dense 
+                    placeholder="Email" 
+                    color="#A6A6A6" 
+                    dark
+                    :rules="[
+                        v => !!v || 'Email is required',
+                        v => /.+@.+/.test(v) || 'Email must be valid'
+                    ]"
+                />
+
+
+                <v-text-field 
+                    type="text"
+                    outlined
+                    dense
+                    placeholder="New Password"
+                    color="#A6A6A6"
+                    dark
+                    :rules="[
+                        v => !!v || 'Password is required',
+                        v => v.length >= 6 || 'Password must be at least 6 characters'
+                    ]"
+                    v-model="form.password"
+                />
+                <v-text-field
+                    type="text"
+                    outlined
+                    dense
+                    placeholder="Comfirm Password"
+                    color="#A6A6A6"
+                    dark
+                    :rules="[
+                        v => !!v || 'Comfirm Password is required',
+                        v => v.length >= 6 || 'Password must be at least 6 characters',
+                        v => v === form.password || 'Passwords do not match'
+                    ]"
+                    v-model="form.password_confirmation"
+                />
 
                 <div class="d-flex justify-center" >
                     <v-btn type="submit" color="purple" rounded dark>Reset</v-btn>
@@ -45,3 +86,51 @@
 
 
 </template>
+
+<script>
+import Auth from '../../../Repository/Auth';
+
+export default {
+    
+    data(){
+        return {
+
+            form : {
+                email : null,
+                password : '',
+                password_confirmation : '',
+                token : this.$route.params.token
+            },
+
+            error : null
+
+        }
+    },
+
+    methods : {
+
+        async submit(e){
+
+            e.preventDefault();
+
+            try{
+
+                if(this.$refs.rForm.validate()){
+                    this.error = null;
+                    let res = await Auth.resetPassword(this.form);
+                    this.$router.push('/recoverpasswordsuccess');                    
+                }
+
+            }catch(e){
+                this.error = e.response.data.message;
+            }
+
+
+        }
+
+
+    }
+
+
+}
+</script>
