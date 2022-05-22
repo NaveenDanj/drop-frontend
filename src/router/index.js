@@ -16,7 +16,7 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('../views/Auth/Login.vue'),
-    meta: { maintenance: true} 
+    meta: { maintenance: false} 
   },
   {
     path: '/recoverpwd',
@@ -52,8 +52,8 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/Dashboard/Layout.vue'),
-    // meta: { requiresAuth: true}
-    meta: { maintenance : true}
+    meta: { requiresAuth: true}
+    // meta: { maintenance : false}
   },
   {
     path: '/getfile/:fileid',
