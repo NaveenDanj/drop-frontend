@@ -18,97 +18,12 @@
 
       <v-divider></v-divider>
 
-      <v-card-text class="pa-3" style="height : 400px;">
-        <!-- drag and drop file or click to open file dialog -->
-
-        <div class="pa-2">
-
-            <div class="ma-2">
-                <label ><b>Update 1.1.0: The update addresses this security issue.</b></label><br/>
-                <label><b>Release Date : 28/05/2022 </b></label><br/>
-            </div>
-            
-            <v-divider></v-divider>
-            
-            <div class="pa-2">
-                <p>Welcome to the May 2022 release of DROP. There are many updates in this version that we hope you'll like, some of the key highlights include:</p>
-            </div>
-
-            <div>
-
-                <ul>
-                    <li>Add new Dashboard to registered users.</li>
-                    <li>Registered users can upload permeant files.</li>
-                    <li>Registered users can see their uploaded files.</li>
-                    <li>Add page to see release logs / release notes.</li>
-                    <li>Added 404 page.</li>
-                </ul>
-
-            </div>
-
-            <v-divider></v-divider>
-
-        </div>
-
-        <div class="pa-2">
-
-            <div class="ma-2">
-                <label ><b>Update 1.1.0: The update addresses this security issue.</b></label><br/>
-                <label><b>Release Date : 28/05/2022 </b></label><br/>
-            </div>
-            
-            <v-divider></v-divider>
-            
-            <div class="pa-2">
-                <p>Welcome to the May 2022 release of DROP. There are many updates in this version that we hope you'll like, some of the key highlights include:</p>
-            </div>
-
-            <div>
-
-                <ul>
-                    <li>Add new Dashboard to registered users.</li>
-                    <li>Registered users can upload permeant files.</li>
-                    <li>Registered users can see their uploaded files.</li>
-                    <li>Add page to see release logs / release notes.</li>
-                    <li>Added 404 page.</li>
-                </ul>
-
-            </div>
-
-            <v-divider></v-divider>
-
-        </div>
-
-        <div class="pa-2">
-
-            <div class="ma-2">
-                <label ><b>Update 1.1.0: The update addresses this security issue.</b></label><br/>
-                <label><b>Release Date : 28/05/2022 </b></label><br/>
-            </div>
-            
-            <v-divider></v-divider>
-            
-            <div class="pa-2">
-                <p>Welcome to the May 2022 release of DROP. There are many updates in this version that we hope you'll like, some of the key highlights include:</p>
-            </div>
-
-            <div>
-
-                <ul>
-                    <li>Add new Dashboard to registered users.</li>
-                    <li>Registered users can upload permeant files.</li>
-                    <li>Registered users can see their uploaded files.</li>
-                    <li>Add page to see release logs / release notes.</li>
-                    <li>Added 404 page.</li>
-                </ul>
-
-            </div>
-
-            <v-divider></v-divider>
-
-        </div>
-        
-
+      <v-card-text class="pa-3" style="height: 400px">
+        <ChangeLogRecord />
+        <ChangeLogRecord />
+        <ChangeLogRecord />
+        <ChangeLogRecord />
+        <ChangeLogRecord />
       </v-card-text>
 
       <v-divider></v-divider>
@@ -117,11 +32,19 @@
         <v-spacer></v-spacer>
       </v-card-actions>
     </v-card>
+    
   </v-dialog>
 </template>
 
 <script>
+import ChangeLogRecord from "./ChangeLog/ChangeLogRecord.vue";
+
 export default {
+
+  components: {
+    ChangeLogRecord,
+  },
+
   data() {
     return {
       dialog: false,
