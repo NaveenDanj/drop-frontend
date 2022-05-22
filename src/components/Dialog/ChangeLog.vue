@@ -19,7 +19,14 @@
       <v-divider></v-divider>
 
       <v-card-text class="pa-3" style="height: 400px">
-        <ChangeLogRecord v-for="(item , index) in releaseList" :key="index" />
+        <ChangeLogRecord
+          v-for="(item, index) in releaseList"
+          :key="index"
+          :version="item.version"
+          :releaseDate="item.release_date"
+          :releaseNotes="item.release_log"
+          :issueLink="item.issue_link"
+        />
       </v-card-text>
 
       <v-divider></v-divider>
@@ -28,15 +35,13 @@
         <v-spacer></v-spacer>
       </v-card-actions>
     </v-card>
-
   </v-dialog>
 </template>
 
 <script>
 import ChangeLogRecord from "./ChangeLog/ChangeLogRecord.vue";
-
+import ReleaseNote from "../../Repository/ReleaseNote";
 export default {
-
   components: {
     ChangeLogRecord,
   },
@@ -44,7 +49,17 @@ export default {
   data() {
     return {
       dialog: false,
+      releaseList: [],
     };
+  },
+
+  async created() {
+    try {
+      let note = await ReleaseNote.getAll();
+      this.releaseList = note.data.releaseLogs;
+    } catch (err) {
+      console.log(err);
+    }
   },
 };
 </script>
