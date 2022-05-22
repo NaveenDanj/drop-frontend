@@ -18,7 +18,6 @@
 
     <div>
       <ul>
-          <li >test</li>
         <li v-for="(item , index) in list" :key="index">{{ item }}</li>
       </ul>
     </div>
