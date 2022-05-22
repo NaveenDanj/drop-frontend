@@ -19,11 +19,7 @@
       <v-divider></v-divider>
 
       <v-card-text class="pa-3" style="height: 400px">
-        <ChangeLogRecord />
-        <ChangeLogRecord />
-        <ChangeLogRecord />
-        <ChangeLogRecord />
-        <ChangeLogRecord />
+        <ChangeLogRecord v-for="(item , index) in releaseList" :key="index" />
       </v-card-text>
 
       <v-divider></v-divider>
@@ -32,7 +28,7 @@
         <v-spacer></v-spacer>
       </v-card-actions>
     </v-card>
-    
+
   </v-dialog>
 </template>
 
