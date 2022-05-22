@@ -2,9 +2,9 @@
 <template>
   <div style="min-height: 100vh" class="gradient-background">
 
-    <div v-if="$store.state.currentUser == null" class="d-flex pr-5 pt-5">
+    <div v-if="$store.state.currentUser == null" class="d-flex pl-5 pr-5 pt-5">
+      <ChangeLog />
       <v-spacer></v-spacer>
-      
       <v-btn class="mr-5" icon dark  fab outlined @click="() => $router.push('/login')">
         <v-icon class="white--text"> mdi-login-variant</v-icon>
       </v-btn>
@@ -15,7 +15,9 @@
 
     </div>
 
-    <div v-else class="d-flex pr-5 pt-5">
+    <div v-else class="d-flex pl-5 pr-5 pt-5">
+      <ChangeLog />
+
       <v-spacer></v-spacer>
       
       <v-btn class="mr-5" icon dark  fab outlined @click="() => $router.push('/dashboard')">
@@ -65,11 +67,13 @@
 
 <script>
 import UploadFileHomePage from "../components/Dialog/UploadFileHomePage.vue";
+import ChangeLog from "../components/Dialog/ChangeLog.vue";
 import Auth from '../Repository/Auth';
 
 export default {
   components: {
     UploadFileHomePage,
+    ChangeLog
   },
 
   name: "Home",
