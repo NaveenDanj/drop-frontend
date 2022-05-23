@@ -33,10 +33,10 @@
 
 <script>
 
-  import SetParameters from './PrivateFileUpload/SetParameters.vue';
-  import SelectFile from './PrivateFileUpload/SelectFile.vue'
-  import UploadProgress from './PrivateFileUpload/UploadProgress.vue';
-  import UploadResults from './PrivateFileUpload/UploadResults.vue';
+  import SetParameters from './UploadFile/SetParameters.vue';
+  import SelectFile from './UploadFile/SelectFile.vue'
+  import UploadProgress from './UploadFile/UploadProgress.vue';
+  import UploadResults from './UploadFile/UploadResults.vue';
 
 
   import api from '../../API';
@@ -86,12 +86,6 @@
         formData.append('file', this.chunks[0], `${this.file.name}.part`);
 
         if(this.chunks.length === 1){
-
-
-          if(localStorage.getItem('token') != null && this.$store.state.currentUser != null){
-            formData.append('user_id', this.$store.state.currentUser.id);
-          }
-
           formData.append('isPasswordProtected' , this.$store.state.currentFileData.havePassword);
           formData.append('password' , this.$store.state.currentFileData.password);
           formData.append('isDayExpired' , this.$store.state.currentFileData.expireDateAdded);
