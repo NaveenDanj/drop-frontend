@@ -84,6 +84,7 @@ export default {
 
       try{
         let res = await Auth.logout();
+        this.$store.commit('setCurrentUser', null);
         this.$router.push('/login');
       }catch(err){
         console.log(err);
