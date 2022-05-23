@@ -13,9 +13,9 @@
 
       </template>
 
-      <SelectFile v-if="!file" @fileSelected="handleFileSelected" />
-      <SetParameters v-if="showSetParameters" :file="file" @doUpload="handleDoUpload" />
-      <UploadProgress  v-if="uploadProgressShow" :uploadedValue="progress"  />
+      <SelectFile v-if="!file" @fileSelected="handleFileSelected" @close="closeDialog" />
+      <SetParameters v-if="showSetParameters" :file="file" @doUpload="handleDoUpload" @close="closeDialog" />
+      <UploadProgress  v-if="uploadProgressShow" :uploadedValue="progress" @close="closeDialog" />
       <UploadResults v-if="showUploadResult" @close="closeDialog" />
 
     </v-dialog>
@@ -26,10 +26,10 @@
 
 <script>
 
-  import SetParameters from './UploadFile/SetParameters.vue';
-  import SelectFile from './UploadFile/SelectFile.vue'
-  import UploadProgress from './UploadFile/UploadProgress.vue';
-  import UploadResults from './UploadFile/UploadResults.vue';
+  import SetParameters from './PrivateFileUpload/SetParameters.vue';
+  import SelectFile from './PrivateFileUpload/SelectFile.vue'
+  import UploadProgress from './PrivateFileUpload/UploadProgress.vue';
+  import UploadResults from './PrivateFileUpload/UploadResults.vue';
 
 
   import api from '../../API';
@@ -80,6 +80,12 @@
         formData.append('file', this.chunks[0], `${this.file.name}.part`);
 
         if(this.chunks.length === 1){
+
+          if(localStorage.getItem('token') != null && this.$store.state.currentUser != null ){
+            formData.append('user_id' , this.$store.state.currentUser.id);
+            formData.append('email' , this.$store.state.currentUser.email);
+          }
+
           formData.append('isPasswordProtected' , this.$store.state.currentFileData.havePassword);
           formData.append('password' , this.$store.state.currentFileData.password);
           formData.append('isDayExpired' , this.$store.state.currentFileData.expireDateAdded);

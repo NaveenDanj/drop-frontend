@@ -1,16 +1,12 @@
 <template>
   <v-card>
     <v-card-title class="text-h5 #1D1D1F">
-
       Upload File
       <v-spacer></v-spacer>
 
-      <v-btn rounded icon
-          @click="close"
-      >
-          <v-icon>mdi-close</v-icon>
+      <v-btn rounded icon @click="close">
+        <v-icon>mdi-close</v-icon>
       </v-btn>
-
     </v-card-title>
 
     <v-divider></v-divider>
@@ -56,24 +52,22 @@ export default {
   },
 
   methods: {
-
-    close(){
-      this.$emit('close');
+    close() {
+      console.log("closed!");
+      this.$emit("close");
     },
 
     dragFile(e) {
       e.preventDefault();
       this.file = e.dataTransfer.files[0];
       this.$store.state.currentFileData.file = this.file;
-      console.log(this.file);
-      this.$emit('fileSelected', this.file);
+      this.$emit("fileSelected", this.file);
     },
 
     handleChange(e) {
       this.file = e.target.files[0];
       this.$store.state.currentFileData.file = this.file;
-      console.log("ch" , this.$store.state.currentFileData.file);
-      this.$emit('fileSelected', this.file);
+      this.$emit("fileSelected", this.file);
     },
 
     handleOpenSelectFileDialog() {

@@ -46,7 +46,7 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: () => import('../views/Auth/Register.vue'),
-    meta: { maintenance: true} 
+    meta: { maintenance: false} 
   },
   {
     path: '/dashboard',
