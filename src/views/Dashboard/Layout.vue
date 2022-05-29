@@ -22,7 +22,7 @@
                 <v-list-item-title>Dashboard</v-list-item-title>
             </v-list-item>
 
-            <v-list-item dark link>
+            <!-- <v-list-item dark link>
                 <v-list-item-icon >
                     <v-icon >mdi-file-multiple </v-icon>
                 </v-list-item-icon>
@@ -41,7 +41,7 @@
                     <v-icon >mdi-star-box-multiple </v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>Favourite</v-list-item-title>
-            </v-list-item>
+            </v-list-item> -->
 
         </v-list>
 
