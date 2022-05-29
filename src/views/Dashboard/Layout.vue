@@ -60,7 +60,7 @@
                     <v-progress-linear value="25"></v-progress-linear><br/>
                     <p>75% Full - 3.9 GB Free</p>
 
-                    <v-btn outlined color="success">BUY STORAGE</v-btn>
+                    <v-btn outlined color="success" @click="() => $router.push('/maintenance')">BUY STORAGE</v-btn>
                 </div>
 
             </div>
