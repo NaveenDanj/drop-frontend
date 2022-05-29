@@ -22,25 +22,25 @@ const routes = [
     path: '/recoverpwd',
     name: 'RecoverPassword',
     component: () => import('../views/Auth/ResetPassword/RecoverPassword.vue'),
-    meta: { maintenance: true} 
+    meta: { maintenance: false} 
   },
   {
     path: '/recoverlinksuccess',
     name: 'RecoverPasswordLinkSuccess',
     component: () => import('../views/Auth/ResetPassword/ResetLinkSuccess.vue'),
-    meta: { maintenance: true} 
+    meta: { maintenance: false} 
   },
   {
     path: '/recoverpasswordsuccess',
     name: 'RecoverPasswordSuccess',
     component: () => import('../views/Auth/ResetPassword/RecoverPasswordSuccess.vue'),
-    meta: { maintenance: true} 
+    meta: { maintenance: false} 
   },
   {
     path: '/resetpwd/:token',
     name: 'ResetPassword',
     component: () => import('../views/Auth/ResetPassword/ResetPassword.vue'),
-    meta: { maintenance: true} 
+    meta: { maintenance: false} 
   },
   {
     path: '/register',

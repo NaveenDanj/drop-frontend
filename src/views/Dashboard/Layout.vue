@@ -57,12 +57,11 @@
 
                 <div class="mt-3">
                     <p>17.1 / 20 GB Used</p>
-                    <v-progress-linear value="15"></v-progress-linear><br/>
+                    <v-progress-linear value="25"></v-progress-linear><br/>
                     <p>75% Full - 3.9 GB Free</p>
 
                     <v-btn outlined color="success">BUY STORAGE</v-btn>
                 </div>
-
 
             </div>
         </template>
