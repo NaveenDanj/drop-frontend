@@ -52,37 +52,59 @@
       </v-col> </v-row
     ><br />
 
-
-    <div style="background-color : #121212;" class="pa-5">
-
-        <div class="d-flex justify-space-between" >
-            <h2>Files</h2>
-        </div>
+    <div style="background-color: #121212" class="pa-5">
+      <div class="d-flex justify-space-between">
+        <h2>Files</h2>
+      </div>
 
       <v-data-table
         style="background-color: #121212"
         :headers="headers"
         :items="items"
         :items-per-page="5"
+        hide-default-footer
         class="elevation-0 mt-5"
         rounded
         dark
       >
-        <template v-slot:[`item.action`]="{}">
-          <v-btn icon>
+        <template v-slot:[`item.action`]="{ item }">
+          <v-btn icon @click="getLink(item)">
             <!-- menu icon -->
-            <v-icon>mdi-dots-horizontal</v-icon>
+            <v-icon>mdi-link-variant </v-icon>
           </v-btn>
         </template>
       </v-data-table>
 
-    </div>
+      <center>
+        <div style="width : 50%">
+          <v-pagination v-model="page" class="my-4" :length="pages"></v-pagination>
+        </div>
+      </center>
 
+    </div>
   </div>
 </template>
 
 <script>
+import FileHandle from "../../Repository/FileHandle";
+
 export default {
+
+  watch:{
+
+    page(newPage){
+      console.log(newPage);
+      this.getData();
+    }
+
+
+  },
+
+
+  created() {
+    this.getData();
+  },
+
   data() {
     return {
       headers: [
@@ -90,41 +112,51 @@ export default {
           text: "Name",
           align: "start",
           sortable: false,
-          value: "name",
+          value: "original_name",
         },
-        { text: "Owner", value: "owner" },
-        { text: "Uploaded Date", value: "upload_date" },
-        { text: "File Size", value: "file_size" },
+        { text: "Uploaded Date", value: "created_at" },
+        { text: "Expire At", value: "expire_at" },
         { text: "Action", value: "action" },
       ],
-
-      items: [
-        {
-          name: "Weekly Report.pdf",
-          owner: "John Doe",
-          upload_date: "12/12/2019",
-          file_size: "1.5MB",
-        },
-        {
-          name: "Milestone.docx",
-          owner: "John Doe",
-          upload_date: "12/12/2019",
-          file_size: "1.5MB",
-        },
-        {
-          name: "Training center.xlsx",
-          owner: "John Doe",
-          upload_date: "12/12/2019",
-          file_size: "1.5MB",
-        },
-        {
-          name: "Flavour.pptx",
-          owner: "John Doe",
-          upload_date: "12/12/2019",
-          file_size: "1.5MB",
-        },
-      ],
+      currentPage: 1,
+      items: [],
+      page : 1,
+      pages : 1,
     };
+  },
+
+  methods: {
+    async getData() {
+      try {
+        let userid = this.$store.state.currentUser.id;
+        let response = await FileHandle.getUserFiles(userid , this.page);
+        console.log("response", response);
+        this.items = response.data.userFiles.data;
+        this.pages = response.data.userFiles.total;
+
+        this.items.map((item) => {
+          item.created_at = new Intl.DateTimeFormat("en-US").format(
+            new Date(item.created_at)
+          );
+
+          let created_at_timestamp = new Date(item.created_at).getTime();
+          let expire_at_timestamp = item.expired_at + created_at_timestamp;
+          item.expire_at = new Intl.DateTimeFormat("en-US").format(
+            new Date(expire_at_timestamp)
+          );
+
+          // item.expire_at =
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    getLink(item) {
+      // copy link to clipboard
+      console.log(item);
+      navigator.clipboard.writeText('https://drop.wondersoftinno.com/getfile/' + item.fileID);
+    },
   },
 };
 </script>

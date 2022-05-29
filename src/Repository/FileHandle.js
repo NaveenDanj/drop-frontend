@@ -25,9 +25,9 @@ export default {
 
     },
 
-    getUserFiles : (userID) => {
+    getUserFiles : (userID , page) => {
 
-        return API.get(`/api/dashboard/userfiles/${userID}` , {
+        return API.get(`/api/dashboard/userfiles/${userID}?page=${page}` , {
             headers : {
                 'Content-Type' : 'application/json',
                 'Authorization' : `Bearer ${localStorage.getItem('token')}`
