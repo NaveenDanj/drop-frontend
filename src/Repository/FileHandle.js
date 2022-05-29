@@ -35,6 +35,17 @@ export default {
         })
 
 
+    },
+
+    getFileCount : () => {
+        let token = localStorage.getItem('token');
+        return API.get(`/api/dashboard/userfilecount` , {
+            headers : {
+                'Content-Type' : 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem('token')}`,
+            }
+        });
+    
     }
 
 }
