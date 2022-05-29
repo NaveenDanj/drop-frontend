@@ -35,7 +35,7 @@
                 <div class="d-flex justify-space-between" >
                     <!-- remember me radio button -->
                     <v-checkbox label="Remember me" color="#A6A6A6" dark/>
-                    <label class="my-auto">Forgot Password</label>
+                    <label class="my-auto" @click="() => $router.push('/recoverpwd')" >Forgot Password</label>
                 </div>
 
                 <div class="d-flex justify-center" >
