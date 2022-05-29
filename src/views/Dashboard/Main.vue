@@ -3,16 +3,16 @@
     <h2>My Drive</h2>
 
     <v-row class="mt-3">
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="12">
         <v-card
           style="background-color: #121212"
           class="elevation-0 white--text"
         >
           <div class="d-flex pa-3 justify-space-between">
             <div class="">
-              <span style="font-size: 30px">Welcome Naveen</span>
+              <span style="font-size: 30px">Welcome {{ $store.state.currentUser.name }}</span>
               <p style="font-size: 15px">
-                You have 32 new notifications and 23 unread messages to reply
+                upload files to your cloud storage and share them with your friends. No signup required. No upload limits.
               </p>
             </div>
 
@@ -26,7 +26,7 @@
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="4" style="height: 100%">
+      <!-- <v-col cols="12" md="4" style="height: 100%">
         <v-card
           style="background-color: #121212"
           class="elevation-0 white--text pa-3"
@@ -49,7 +49,9 @@
             </div>
           </div>
         </v-card>
-      </v-col> </v-row
+      </v-col> -->
+      
+    </v-row
     ><br />
 
     <div style="background-color: #121212" class="pa-5">
