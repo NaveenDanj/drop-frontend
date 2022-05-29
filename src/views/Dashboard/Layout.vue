@@ -56,9 +56,9 @@
                 </div>
 
                 <div class="mt-3">
-                    <p>17.1 / 20 GB Used</p>
-                    <v-progress-linear value="25"></v-progress-linear><br/>
-                    <p>75% Full - 3.9 GB Free</p>
+                    <p>{{ fileCount }} / {{ fileLimit }} Files Used</p>
+                    <v-progress-linear :value=" filePrecentage "></v-progress-linear><br/>
+                    <p>{{ filePrecentage }}% Full - {{ fileLimit - fileCount }} Files Free</p>
 
                     <v-btn outlined color="success" @click="() => $router.push('/maintenance')">BUY STORAGE</v-btn>
                 </div>
@@ -125,9 +125,19 @@ export default {
         UploadFile
     },
 
+    computed : {
+
+        filePrecentage() {
+            return (this.fileCount / this.fileLimit) * 100;
+        },
+
+    },
+
     data(){
         return {
-            drawer: true
+            drawer: true,
+            fileLimit : this.$store.state.currentUser.file_limit,
+            fileCount : 0
         }
     },
 
@@ -136,11 +146,11 @@ export default {
         try{
             let userid = this.$store.state.currentUser.id;
             let res = await FileHandle.getFileCount();
-            console.log(res);
+            console.log('count ' , res);
+            this.fileCount = res.data.userFilesCount;
         }catch(e){
             console.log(e);
         }
-
 
 
     },
