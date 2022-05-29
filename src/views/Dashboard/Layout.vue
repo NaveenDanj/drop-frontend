@@ -114,6 +114,7 @@ import Files from './Files.vue';
 import Favourite from './Favourite.vue'
 import Main from './Main.vue'
 import UploadFile from '../../components/Dialog/UploadFile.vue'
+import FileHandle from '../../Repository/FileHandle';
 
 export default {
     
@@ -128,7 +129,22 @@ export default {
         return {
             drawer: true
         }
-    }
+    },
+
+    async created(){
+
+        try{
+            let userid = this.$store.state.currentUser.id;
+            let res = await FileHandle.getFileCount();
+            console.log(res);
+        }catch(e){
+            console.log(e);
+        }
+
+
+
+    },
+
 
 }
 </script>
