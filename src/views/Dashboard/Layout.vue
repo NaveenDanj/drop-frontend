@@ -54,18 +54,18 @@
             <v-btn icon dark @click="() => drawer = !drawer">
                 <v-icon>mdi-menu</v-icon>
             </v-btn>
-            <label class="white--text">CloudBOX</label>
+            <label class="white--text">DROP</label>
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
 
         <v-toolbar-items dark>
-            <v-btn icon dark>
+            <!-- <v-btn icon dark>
                 <v-icon>mdi-message-text</v-icon>
             </v-btn>
             <v-btn icon dark>
                 <v-icon>mdi-account</v-icon>
-            </v-btn>
+            </v-btn> -->
         </v-toolbar-items>
 
     </v-app-bar>
@@ -80,7 +80,7 @@
 
     <v-footer style="background-color : #121212;" class="pa-2 d-flex justify-space-between">
         <label style="color : #929292">Privacy Policy Terms of Use</label>
-        <label style="color : #929292">Copyright 2022 CloudBOX All Rights Reserved.</label>
+        <label style="color : #929292">Copyright 2022 DROP All Rights Reserved.</label>
     </v-footer>
 
   </v-app>
