@@ -14,6 +14,17 @@ export default {
     
     },
 
+    register : (form) => {
+
+        return API.post('/api/auth/register', form ,{
+            headers : {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+            }
+        });
+
+    },
+
     logout : () => {
 
         return API.get('/api/auth/logout', {
