@@ -45,6 +45,28 @@
 
         </v-list>
 
+        <!-- <div style="border-top-width : 0.5px; border-top-style : solid; border-top-color : white;"></div> -->
+
+        <template v-slot:append>
+            <div style="width : 100%;color:white" class="pa-5 mb-15"  >
+                
+                <div style="width : 100%" class="d-flex" >
+                    <v-icon dark x-large>mdi-cloud-outline</v-icon>
+                    <h2 class="my-auto ml-5">Storage</h2>
+                </div>
+
+                <div class="mt-3">
+                    <p>17.1 / 20 GB Used</p>
+                    <v-progress-linear value="15"></v-progress-linear><br/>
+                    <p>75% Full - 3.9 GB Free</p>
+
+                    <v-btn outlined color="success">BUY STORAGE</v-btn>
+                </div>
+
+
+            </div>
+        </template>
+
 
     </v-navigation-drawer>
 
