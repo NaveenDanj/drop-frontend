@@ -18,6 +18,17 @@
 
             <v-form ref="registerForm" @submit="submit">
 
+                <v-alert
+                    :value="true"
+                    type="error"
+                    color="error"
+                    icon="mdi-alert-circle"
+                    dismissible
+                    v-if="error != null"
+                >
+                    {{ error }}
+                </v-alert>
+
                 <v-text-field 
                     v-model="form.name"
                     outlined
@@ -107,6 +118,8 @@
 </template>
 
 <script>
+import Auth from '../../Repository/Auth';
+
 export default {
     
 
@@ -125,9 +138,26 @@ export default {
 
     methods : {
 
-        submit(e){
+        async submit(e){
             e.preventDefault();
-            console.log('submit');
+            
+            if(!this.$refs.registerForm.validate()){
+                return;
+            }
+
+            this.error = null;
+
+            try{
+
+                let res = await Auth.register(this.form);
+                console.log(res);
+                localStorage.setItem('token' , res.data.token);
+                this.$store.commit('setCurrentUser' , res.data.user);
+                this.$router.push('/dashboard');
+            }catch(e){
+                this.error = e.response.data.message;
+            }
+
         }
 
     }
