@@ -67,6 +67,18 @@ export default {
                 authorization: "Bearer " + localStorage.getItem('token'),
             },
         });
+    },
+
+    updateAccount : (form) => {
+        return API.post('/api/auth/update-account' , form ,{
+            
+            headers : {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            }
+        
+        });
     }
 
 
