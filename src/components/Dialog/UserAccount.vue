@@ -34,8 +34,8 @@
         </div>
 
         <div>
-            <center><h2>Naveen Hettiwaththa</h2></center>
-            <center><label>naveenhettiwaththa@gmail.com</label></center>
+            <center><h2>{{ $store.state.currentUser.name }}</h2></center>
+            <center><label>{{ $store.state.currentUser.email }}</label></center>
         </div>
 
         <div class="pa-5" style="width : 100%">
@@ -70,7 +70,11 @@
                     v-model="email"
                 />
 
-                <v-btn type="submit" color="purple" outlined rounded dark>Update</v-btn>
+                <div class="d-flex justify-space-between"  >
+                    <v-btn type="submit" color="purple" outlined rounded dark>Update</v-btn>
+                    <v-btn outlined color="red" rounded dark @click="handleLogout">LOGOUT</v-btn>
+                </div>
+
 
             </v-form>
 
@@ -119,6 +123,18 @@ export default {
                 this.dialog = false;
             }catch(e){
                 this.error = e.response.data.message;
+            }
+
+        },
+
+        async handleLogout(){
+
+            try{
+                let res = await Auth.logout();
+                this.$store.commit('setCurrentUser', null);
+                this.$router.push('/login');
+            }catch(err){
+                console.log(err);
             }
 
         }
