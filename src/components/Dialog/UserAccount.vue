@@ -1,6 +1,6 @@
 <template>
 
-  <v-dialog v-model="dialog" width="650" scrollable dark persistent>
+  <v-dialog v-model="dialog" width="550" scrollable dark persistent>
 
     <template v-slot:activator="{ on, attrs }">
 
@@ -53,9 +53,25 @@
                     {{ error }}
                 </v-alert>
 
-                <v-text-field  outlined dense dark label="Full name" />
-                <v-text-field  outlined dense dark label="Email" readonly />
-                <v-btn color="purple" outlined rounded dark>Update</v-btn>
+                <v-text-field  
+                    outlined
+                    dense
+                    dark
+                    label="Full name"
+                    v-model="form.name"
+                />
+
+                <v-text-field 
+                    outlined
+                    dense
+                    dark
+                    label="Email"
+                    readonly
+                    v-model="form.email"
+                />
+
+                <v-btn type="submit" color="purple" outlined rounded dark>Update</v-btn>
+
             </v-form>
 
         </div>
@@ -69,13 +85,44 @@
 </template>
 
 <script>
+
+import Auth from '../../Repository/Auth';
+
 export default {
+
+    created(){
+        this.form.name = this.$store.state.currentUser.name;
+        this.form.email = this.$store.state.currentUser.email;
+    },
 
     data(){
         return {
             dialog : false,
-            error : null
+            error : null,
+            form : {
+                name : null,
+                email : null
+            }
         }
+    },
+
+    methods : {
+
+        async submit(e){
+            
+            e.preventDefault();
+
+            try{
+                this.error = null;
+                let res = await Auth.updateAccount(this.form);
+                console.log(res);
+            }catch(e){
+                this.error = e.response.data.message;
+                console.log(e);
+            }
+
+        }
+
     }
 
 };
