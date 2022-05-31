@@ -83,10 +83,9 @@
         <v-toolbar-items dark>
             <!-- <v-btn icon dark>
                 <v-icon>mdi-message-text</v-icon>
-            </v-btn>
-            <v-btn icon dark>
-                <v-icon>mdi-account</v-icon>
             </v-btn> -->
+            <UserAccountVue />
+            
         </v-toolbar-items>
 
     </v-app-bar>
@@ -115,6 +114,7 @@ import Favourite from './Favourite.vue'
 import Main from './Main.vue'
 import UploadFile from '../../components/Dialog/UploadFile.vue'
 import FileHandle from '../../Repository/FileHandle';
+import UserAccountVue from '../../components/Dialog/UserAccount.vue';
 
 export default {
     
@@ -122,7 +122,8 @@ export default {
         Files,
         Favourite,
         Main,
-        UploadFile
+        UploadFile,
+        UserAccountVue
     },
 
     computed : {
