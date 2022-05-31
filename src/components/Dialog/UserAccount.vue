@@ -67,7 +67,7 @@
                     dark
                     label="Email"
                     readonly
-                    v-model="form.email"
+                    v-model="email"
                 />
 
                 <v-btn type="submit" color="purple" outlined rounded dark>Update</v-btn>
@@ -92,16 +92,16 @@ export default {
 
     created(){
         this.form.name = this.$store.state.currentUser.name;
-        this.form.email = this.$store.state.currentUser.email;
+        this.email = this.$store.state.currentUser.email;
     },
 
     data(){
         return {
             dialog : false,
             error : null,
+            email : null,
             form : {
                 name : null,
-                email : null
             }
         }
     },
@@ -115,10 +115,10 @@ export default {
             try{
                 this.error = null;
                 let res = await Auth.updateAccount(this.form);
-                console.log(res);
+                this.$store.commit('setCurrentUser' , res.data.user);
+                this.dialog = false;
             }catch(e){
                 this.error = e.response.data.message;
-                console.log(e);
             }
 
         }

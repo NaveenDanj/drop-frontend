@@ -81,11 +81,7 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items dark>
-            <!-- <v-btn icon dark>
-                <v-icon>mdi-message-text</v-icon>
-            </v-btn> -->
             <UserAccountVue />
-            
         </v-toolbar-items>
 
     </v-app-bar>
