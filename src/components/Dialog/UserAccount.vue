@@ -40,7 +40,19 @@
 
         <div class="pa-5" style="width : 100%">
             
-            <v-form>
+            <v-form @submit="submit" ref="updateForm">
+
+                <v-alert
+                    :value="true"
+                    type="error"
+                    color="error"
+                    icon="mdi-alert-circle"
+                    dismissible
+                    v-if="error != null"
+                >
+                    {{ error }}
+                </v-alert>
+
                 <v-text-field  outlined dense dark label="Full name" />
                 <v-text-field  outlined dense dark label="Email" readonly />
                 <v-btn color="purple" outlined rounded dark>Update</v-btn>
@@ -61,7 +73,8 @@ export default {
 
     data(){
         return {
-            dialog : false
+            dialog : false,
+            error : null
         }
     }
 
