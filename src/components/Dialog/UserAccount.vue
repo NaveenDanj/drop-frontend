@@ -4,7 +4,7 @@
 
     <template v-slot:activator="{ on, attrs }">
 
-        <v-btn icon dark v-bind="attrs" v-on="on">
+        <v-btn @click="handleOpen" icon dark v-bind="attrs" v-on="on">
             <v-icon>mdi-account</v-icon>
         </v-btn>
 
@@ -59,6 +59,10 @@
                     dark
                     label="Full name"
                     v-model="form.name"
+                    :rules="[
+                        v => !!v || 'Name is required',
+                        v => v.length <= 50 || 'Name must be less than 50 characters'
+                    ]"
                 />
 
                 <v-text-field 
@@ -137,6 +141,11 @@ export default {
                 console.log(err);
             }
 
+        },
+
+        handleOpen(){
+            this.form.name = this.$store.state.currentUser.name;
+            this.email = this.$store.state.currentUser.email;
         }
 
     }
