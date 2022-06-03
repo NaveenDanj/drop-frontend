@@ -74,7 +74,7 @@
             <!-- menu icon -->
             <v-icon>mdi-link-variant </v-icon>
           </v-btn>
-          <SendFileToUserVue />
+          <SendFileToUserVue :fileID="item.id" :fileData="item" />
         </template>
       </v-data-table>
 
