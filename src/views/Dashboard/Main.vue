@@ -74,6 +74,7 @@
             <!-- menu icon -->
             <v-icon>mdi-link-variant </v-icon>
           </v-btn>
+          <SendFileToUserVue />
         </template>
       </v-data-table>
 
@@ -89,8 +90,13 @@
 
 <script>
 import FileHandle from "../../Repository/FileHandle";
+import SendFileToUserVue from "../../components/Dialog/SendFileToUser.vue";
 
 export default {
+
+  components : {
+    SendFileToUserVue
+  },
 
   watch:{
 
