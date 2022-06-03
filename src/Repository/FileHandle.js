@@ -46,6 +46,16 @@ export default {
             }
         });
     
+    },
+
+    sendFile : (form) => {
+        return API.post('/api/sendfile' , form , {
+            headers : {
+                'Content-Type' : 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem('token')}`,
+            }
+        })
+
     }
 
 }
